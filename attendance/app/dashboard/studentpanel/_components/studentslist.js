@@ -30,6 +30,13 @@ const StudentsList = () => {
                     </li>
                 ))}
             </ul>
+            <ul>
+                {student.map((student, index) => (
+                    <li key={index} className="text-white">
+                        {student.name}
+                    </li>
+                ))}
+            </ul>
         </div>
 
     )
