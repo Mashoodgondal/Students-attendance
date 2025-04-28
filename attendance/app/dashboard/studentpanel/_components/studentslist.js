@@ -1,82 +1,140 @@
+
+
+
 "use client"
 import { collection, getDocs } from 'firebase/firestore'
 import db from '../../../../firebaseConfig'
 import React, { useEffect, useState } from 'react'
+import { FiEdit, FiTrash2 } from 'react-icons/fi'
 
 const StudentsList = () => {
-    const [student, setstudent] = useState([])
+    const [students, setStudents] = useState([])
+    const [loading, setLoading] = useState(true)
+    const [error, setError] = useState(null)
+
     const fetchData = async () => {
         try {
+            setLoading(true)
             const studentData = await getDocs(collection(db, "Students"))
-            const Data = studentData.docs.map((doc) => ({ ...doc.data(), id: doc.id }))
-            setstudent(Data)
-            console.log(Data);
-
-        } catch (error) {
-            console.log("Error in fetching");
-
+            const data = studentData.docs.map((doc) => ({
+                ...doc.data(),
+                id: doc.id
+            }))
+            setStudents(data)
+            setLoading(false)
+        } catch (err) {
+            console.error("Error fetching students:", err)
+            setError("Failed to load student data")
+            setLoading(false)
         }
     }
+
+    const handleEdit = (studentId) => {
+        console.log("Edit student with ID:", studentId)
+        // Add your edit logic here
+    }
+
+    const handleDelete = (studentId) => {
+        console.log("Delete student with ID:", studentId)
+        // Add your delete logic here
+        // You might want to add a confirmation modal before deleting
+    }
+
     useEffect(() => {
         fetchData()
     }, [])
+
+    if (loading) {
+        return (
+            <div className="flex justify-center items-center h-64">
+                <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-500"></div>
+            </div>
+        )
+    }
+
+    if (error) {
+        return (
+            <div className="bg-red-100 border-l-4 border-red-500 text-red-700 p-4" role="alert">
+                <p>{error}</p>
+                <button
+                    onClick={fetchData}
+                    className="mt-2 bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
+                >
+                    Retry
+                </button>
+            </div>
+        )
+    }
+
     return (
+        <div className="container mx-auto px-4 py-8">
+            <div className="bg-white shadow-md rounded-lg overflow-hidden">
+                <div className="bg-gradient-to-r from-blue-600 to-blue-800 p-6">
+                    <h2 className="text-2xl font-bold text-white">Students Directory</h2>
+                    <p className="text-blue-100 mt-1">
+                        {students.length} {students.length === 1 ? 'student' : 'students'} registered
+                    </p>
+                </div>
 
-        <div>
-            <ul>
-                <h2>here are list of students</h2>
-                {student.map((data, index) => {
-                    return <li key={index}>
-                        {data?.name}
-                    </li>
-                })}
-            </ul>
+                <div className="overflow-x-auto">
+                    <table className="min-w-full divide-y divide-gray-200">
+                        <thead className="bg-gray-50">
+                            <tr>
+                                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Roll No</th>
+                                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Name</th>
+                                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Email</th>
+                                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody className="bg-white divide-y divide-gray-200">
+                            {students.map((student, index) => (
+                                <tr
+                                    key={student.id}
+                                    className={`${index % 2 === 0 ? 'bg-white' : 'bg-gray-50'} group hover:bg-blue-50 transition-colors`}
+                                >
+                                    <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                                        {student.rollnu}
+                                    </td>
+                                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                        {student.name}
+                                    </td>
+                                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                        <a href={`mailto:${student.email}`} className="text-blue-600 hover:text-blue-800">
+                                            {student.email}
+                                        </a>
+                                    </td>
+                                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                        <div className="flex space-x-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                                            <button
+                                                onClick={() => handleEdit(student.id)}
+                                                className="text-blue-600 hover:text-blue-800 p-1 rounded-full hover:bg-blue-100 transition-colors"
+                                                title="Edit"
+                                            >
+                                                <FiEdit className="h-4 w-4" />
+                                            </button>
+                                            <button
+                                                onClick={() => handleDelete(student.id)}
+                                                className="text-red-600 hover:text-red-800 p-1 rounded-full hover:bg-red-100 transition-colors"
+                                                title="Delete"
+                                            >
+                                                <FiTrash2 className="h-4 w-4" />
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                </div>
 
+                {students.length === 0 && (
+                    <div className="p-6 text-center text-gray-500">
+                        No students found in the database
+                    </div>
+                )}
+            </div>
         </div>
-
     )
 }
 
 export default StudentsList
-
-
-// "use client"
-// import { collection, getDocs } from 'firebase/firestore'
-// import db from '../../../../firebaseConfig'
-// import React, { useEffect, useState } from 'react'
-
-// const StudentsList = () => {
-//     const [student, setstudent] = useState([])
-
-//     const fetchData = async () => {
-//         try {
-//             const querySnapshot = await getDocs(collection(db, "Students"));
-//             const Data = querySnapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id }));
-//             setstudent(Data);
-//             console.log("Fetched Students: ", Data);
-//         } catch (error) {
-//             console.log("Error in fetching", error);
-//         }
-//     }
-
-//     useEffect(() => {
-//         fetchData()
-//     }, [])
-
-//     return (
-//         <div>
-//             <h3>students list</h3>
-//             {student.map((student, index) => {
-//                 console.log(student);
-//                 return (
-//                     <li key={student.id} className="text-white">
-//                         {student.name}
-//                     </li>
-//                 )
-//             })}
-
-//         </div>
-//     )
-// }
-
-// export default StudentsList

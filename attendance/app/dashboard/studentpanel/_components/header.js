@@ -6,15 +6,15 @@ import React from 'react';
 
 const Header = () => {
     return (
-        <header className="flex items-center justify-between px-6 py-4 bg-white shadow-md">
-            {/* Left side: Project name */}
-            <div className="text-2xl font-bold text-blue-600">
-                <Link href="/">MyProject</Link>
+        <header className="flex items-center justify-between px-6 py-4 bg-transparent shadow-sm">
+
+            <div className="text-5xl font-bold text-blue-600">
+                <Link href="/dashboard"><span className="text-cyan-400">S</span><span className="text-purple-500">M</span><span className="text-cyan-400">S</span></Link>
             </div>
 
-            {/* Right side: Buttons */}
+
             <div className="flex items-center gap-4">
-                {/* If user is signed OUT */}
+
                 <SignedOut>
                     <SignUpButton mode="modal">
                         <button className="px-6 py-2 bg-gray-100 text-gray-700 rounded-full hover:bg-blue-500 hover:text-white">
@@ -29,7 +29,7 @@ const Header = () => {
                     </SignInButton>
                 </SignedOut>
 
-                {/* If user is signed IN */}
+
                 <SignedIn>
                     <UserButton afterSignOutUrl="/dashboard" />
                 </SignedIn>
