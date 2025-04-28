@@ -1,3 +1,4 @@
+import Header from "./studentpanel/_components/header";
 import SideBar from "./studentpanel/_components/sidebar";
 
 export default function RootLayout({ children }) {
@@ -6,7 +7,11 @@ export default function RootLayout({ children }) {
             <body
 
             >
+                <Header />
+
                 <SideBar />
+
+
                 {children}
             </body>
         </html>
