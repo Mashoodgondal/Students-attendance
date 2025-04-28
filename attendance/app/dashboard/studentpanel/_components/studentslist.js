@@ -24,14 +24,12 @@ const StudentsList = () => {
 
         <div>
             <ul>
-                <h2>here are students of the list</h2>
-                {student.map((student, index) => (
-                    // console.log(student)
-
-                    <li key={index} className="text-white">
-                        {student.name}
+                <h2>here are list of students</h2>
+                {student.map((data, index) => {
+                    return <li key={index}>
+                        {data?.name}
                     </li>
-                ))}
+                })}
             </ul>
 
         </div>

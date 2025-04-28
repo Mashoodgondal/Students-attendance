@@ -92,7 +92,7 @@ const SideBar = () => {
 
     const navItems = [
         { label: 'Dashboard', path: '/', icon: <GoHome className="w-5 h-5" /> },
-        { label: 'Students Panel', path: '/studentpanel', icon: <GoPeople className="w-5 h-5" /> },
+        { label: 'Students Panel', path: '/dashboard/studentpanel', icon: <GoPeople className="w-5 h-5" /> },
         { label: 'About', path: '/about', icon: <GoInfo className="w-5 h-5" /> },
         { label: 'Contact Us', path: '/contact', icon: <GoMail className="w-5 h-5" /> },
         { label: 'Logout', path: '/logout', icon: <GoSignOut className="w-5 h-5" /> },
