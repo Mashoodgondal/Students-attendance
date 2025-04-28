@@ -34,13 +34,13 @@ const SideBar = () => {
             {/* Toggle Button */}
             <button
                 onClick={toggleSidebar}
-                className={`fixed top-4 z-50 p-2 text-xl text-white bg-gradient-to-r from-blue-400 to-blue-600 rounded-full shadow-lg transition-all duration-300 hover:shadow-xl ${isOpen ? 'left-64 ml-2' : 'left-4'}`}
+                className={`fixed top-20  z-50 p-2 text-xl text-white bg-gradient-to-r from-blue-400 to-blue-600 rounded-full shadow-lg transition-all duration-300 hover:shadow-xl ${isOpen ? 'left-64 ml-2' : 'left-4'}`}
             >
                 <FaAngleRight className={`transition-transform ${isOpen ? 'rotate-180' : ''}`} />
             </button>
 
             {/* Sidebar */}
-            <div className={`fixed top-0 left-0 z-40 h-screen p-4 overflow-y-auto transition-all duration-300 ease-in-out ${isOpen ? 'w-64' : 'w-0 opacity-0'}`}>
+            <div className={`fixed top-15 left-0 z-40  p-4 overflow-y-auto transition-all duration-300 ease-in-out ${isOpen ? 'w-64' : 'w-0 opacity-0'}`}>
                 <div className={`h-full bg-gradient-to-b from-blue-400 to-blue-600 rounded-xl shadow-xl overflow-hidden ${isOpen ? 'opacity-100' : 'opacity-0'}`}>
                     <div className="p-4">
                         <h5 className="text-xl font-bold text-white uppercase tracking-wider flex items-center">
@@ -72,7 +72,7 @@ const SideBar = () => {
                     </div>
 
                     {/* Footer */}
-                    <div className="absolute bottom-0 left-0 right-0 p-4 bg-black/10 text-white/70 text-sm text-center">
+                    <div className="absolute bottom-0 lg:mt-2 left-0 right-0 p-4 text-white/100 text-sm text-center">
                         © {new Date().getFullYear()} Your Brand
                     </div>
                 </div>
