@@ -1,8 +1,5 @@
-
-
-
 "use client"
-import { collection, getDocs } from 'firebase/firestore'
+import { collection, deleteDoc, doc, getDocs } from 'firebase/firestore'
 import db from '../../../../firebaseConfig'
 import React, { useEffect, useState } from 'react'
 import { FiEdit, FiTrash2 } from 'react-icons/fi'
@@ -34,8 +31,15 @@ const StudentsList = () => {
         // Add your edit logic here
     }
 
-    const handleDelete = (studentId) => {
-        console.log("Delete student with ID:", studentId)
+    const handleDelete = async (studentsId) => {
+        try {
+            await deleteDoc(doc(db, "students", studentsId))
+            alert("delete successfully")
+        } catch (error) {
+            console.log("Error in deleting", error);
+
+        }
+        // console.log("Delete student with ID:", studentId)
         // Add your delete logic here
         // You might want to add a confirmation modal before deleting
     }
@@ -80,17 +84,17 @@ const StudentsList = () => {
                     <table className="min-w-full divide-y divide-gray-200">
                         <thead className="bg-gray-50">
                             <tr>
-                                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Roll No</th>
-                                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Name</th>
-                                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Email</th>
-                                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
+                                <th className="px-6 py-3 text-left text-xs font-bold text-gray-700 uppercase tracking-wider">Roll No</th>
+                                <th className="px-6 py-3 text-left text-xs font-bold text-gray-700 uppercase tracking-wider">Name</th>
+                                <th className="px-6 py-3 text-left text-xs font-bold text-gray-700 uppercase tracking-wider">Email</th>
+                                <th className="px-6 py-3 text-left text-xs font-bold text-gray-700 uppercase tracking-wider">Actions</th>
                             </tr>
                         </thead>
                         <tbody className="bg-white divide-y divide-gray-200">
                             {students.map((student, index) => (
                                 <tr
                                     key={student.id}
-                                    className={`${index % 2 === 0 ? 'bg-white' : 'bg-gray-50'} group hover:bg-blue-50 transition-colors`}
+                                    className={`${index % 2 === 0 ? 'bg-gradient-to-r from-gray-100 to-gray-200' : 'bg-gradient-to-r from-gray-200 to-gray-100'} group hover:bg-blue-50 transition-colors`}
                                 >
                                     <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
                                         {student.rollnu}

@@ -15,7 +15,7 @@ import {
 import Link from 'next/link';
 
 const SideBar = () => {
-    const [isOpen, setIsOpen] = useState(true);
+    const [isOpen, setIsOpen] = useState(false);
 
     const toggleSidebar = () => {
         setIsOpen(!isOpen);
@@ -41,9 +41,11 @@ const SideBar = () => {
 
             {/* Sidebar */}
             <div className={`fixed top-15 left-0 z-40  p-4 overflow-y-auto transition-all duration-300 ease-in-out ${isOpen ? 'w-64' : 'w-0 opacity-0'}`}>
-                <div className={`h-full bg-gradient-to-b from-blue-400 to-blue-600 rounded-xl shadow-xl overflow-hidden ${isOpen ? 'opacity-100' : 'opacity-0'}`}>
+                {/* <div className={`h-full bg-transparent rounded-xl shadow-xl overflow-hidden ${isOpen ? 'opacity-100' : 'opacity-0'}`}> */}
+                <div className={`h-full backdrop-blur-lg bg-white/10 rounded-xl shadow-xl overflow-hidden ${isOpen ? 'opacity-100' : 'opacity-0'}`}>
+
                     <div className="p-4">
-                        <h5 className="text-xl font-bold text-white uppercase tracking-wider flex items-center">
+                        <h5 className="text-xl font-bold text-blue-500 uppercase tracking-wider flex items-center">
                             <span className="bg-white text-blue-600 p-2 rounded-lg mr-3">
                                 <GoHome className="w-5 h-5" />
                             </span>
@@ -56,8 +58,10 @@ const SideBar = () => {
                                 {navItems.map((item) => (
                                     <li key={item.label}>
                                         <Link href={item.path}>
-                                            <div className="flex items-center p-3 text-white rounded-lg transition-all duration-200 hover:bg-white/20 group">
-                                                <span className="text-white/80 group-hover:text-white">
+                                            {/* <div className="flex items-center p-3 text-white rounded-lg transition-all duration-200 hover:bg-white/20 group"> */}
+                                            <div className="flex items-center p-3 text-gray-800 rounded-lg transition-all duration-200 hover:bg-black/20 group backdrop-blur-sm">
+
+                                                <span className="text-black/40 group-hover:text-white">
                                                     {item.icon}
                                                 </span>
                                                 <span className="ml-3 font-medium group-hover:translate-x-1 transition-transform">
@@ -72,7 +76,7 @@ const SideBar = () => {
                     </div>
 
                     {/* Footer */}
-                    <div className="absolute bottom-0 lg:mt-2 left-0 right-0 p-4 text-white/100 text-sm text-center">
+                    <div className="absolute bottom-0 lg:mt-2 left-0 right-0 p-4 text-black/100 text-sm text-center">
                         © {new Date().getFullYear()} Your Brand
                     </div>
                 </div>

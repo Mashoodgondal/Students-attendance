@@ -1,8 +1,9 @@
 "use client";
 
 import React from "react";
-import Image from "next/image";
-import imgstud from '../../public/imgstu.jpg'
+// import Image from "next/image";
+
+// import imgstud from '../../public/imgstu.jpg'
 export default function SplashScreen() {
     return (
         <div className="relative pt-28 pb-8 bg-black xl:pt-40 sm:pb-10 lg:pb-12 xl:pb-24 2xl:pb-32
@@ -23,7 +24,7 @@ export default function SplashScreen() {
             </header>
 
 
-            <div className="absolute inset-0">
+            {/* <div className="absolute inset-0">
                 <Image
                     src={imgstud}
                     alt="Attendance Background"
@@ -32,7 +33,20 @@ export default function SplashScreen() {
                     quality={100}
                     priority
                 />
+            </div> */}
+            <div className="absolute inset-0 overflow-hidden">
+                <video
+                    autoPlay
+                    muted
+                    loop
+                    playsInline
+                    className="object-cover w-full h-full opacity-30"
+                >
+                    <source src="/public/vidstu.mp4" type="video/mp4" />
+                    Your browser does not support the video tag.
+                </video>
             </div>
+
 
 
             {/* Hero Content */}
