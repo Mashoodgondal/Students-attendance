@@ -32,8 +32,11 @@ const StudentsList = () => {
     }
 
     const handleDelete = async (studentsId) => {
+        console.log(studentsId);
+        // return
+
         try {
-            await deleteDoc(doc(db, "students", studentsId))
+            await deleteDoc(doc(db, "Students", studentsId))
             alert("delete successfully")
         } catch (error) {
             console.log("Error in deleting", error);
@@ -108,7 +111,7 @@ const StudentsList = () => {
                                         </a>
                                     </td>
                                     <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                                        <div className="flex space-x-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                                        <div className="flex space-x-2 transition-opacity">
                                             <button
                                                 onClick={() => handleEdit(student.id)}
                                                 className="text-blue-600 hover:text-blue-800 p-1 rounded-full hover:bg-blue-100 transition-colors"
