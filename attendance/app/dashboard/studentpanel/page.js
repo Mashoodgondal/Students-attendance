@@ -3,6 +3,7 @@ import React, { useState } from 'react'
 
 import AddStudent from './_components/addStudent'
 import StudentsList from './_components/studentslist'
+import UpdateStudentPage from '../updateStu/[id]/page'
 
 
 const StudentPanel = () => {
@@ -12,6 +13,7 @@ const StudentPanel = () => {
 
             <AddStudent onStudentAdded={() => setRefresh(!refresh)} />
             <StudentsList refresh={refresh} onDelete={() => setRefresh(!refresh)} />
+
         </div>
     )
 }

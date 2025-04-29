@@ -3,8 +3,11 @@ import { collection, deleteDoc, doc, getDocs } from 'firebase/firestore'
 import db from '../../../../firebaseConfig'
 import React, { useEffect, useState } from 'react'
 import { FiEdit, FiTrash2 } from 'react-icons/fi'
+import { useRouter } from 'next/navigation'
+
 
 const StudentsList = ({ refresh, onDelete }) => {
+    const router = useRouter();
     const [students, setStudents] = useState([])
     const [loading, setLoading] = useState(true)
     const [error, setError] = useState(null)
@@ -28,6 +31,7 @@ const StudentsList = ({ refresh, onDelete }) => {
 
     const handleEdit = (studentId) => {
         console.log("Edit student with ID:", studentId)
+        router.push(`/updatestu/${studentId}`)
         // Add your edit logic here
     }
 
