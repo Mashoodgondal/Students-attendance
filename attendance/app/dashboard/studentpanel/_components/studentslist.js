@@ -4,7 +4,7 @@ import db from '../../../../firebaseConfig'
 import React, { useEffect, useState } from 'react'
 import { FiEdit, FiTrash2 } from 'react-icons/fi'
 
-const StudentsList = () => {
+const StudentsList = ({ refresh, onDelete }) => {
     const [students, setStudents] = useState([])
     const [loading, setLoading] = useState(true)
     const [error, setError] = useState(null)
@@ -38,18 +38,18 @@ const StudentsList = () => {
         try {
             await deleteDoc(doc(db, "Students", studentsId))
             alert("delete successfully")
+            onDelete()
         } catch (error) {
             console.log("Error in deleting", error);
 
         }
-        // console.log("Delete student with ID:", studentId)
-        // Add your delete logic here
-        // You might want to add a confirmation modal before deleting
+
     }
 
     useEffect(() => {
         fetchData()
-    }, [])
+
+    }, [refresh])
 
     if (loading) {
         return (

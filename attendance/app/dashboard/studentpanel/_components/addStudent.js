@@ -6,7 +6,7 @@ import { collection, addDoc } from 'firebase/firestore';
 import { FiUser, FiMail, FiHash, FiCheckCircle } from 'react-icons/fi';
 import { toast, Toaster } from 'react-hot-toast';
 
-const AddStudent = () => {
+const AddStudent = ({ onStudentAdded }) => {
     const [formData, setFormData] = useState({
         rollnu: '',
         name: '',
@@ -46,7 +46,7 @@ const AddStudent = () => {
                 email: formData.email,
                 createdAt: new Date().toISOString()
             });
-
+            onStudentAdded()
             toast.success('Student added successfully!');
 
             // Reset form after successful submission

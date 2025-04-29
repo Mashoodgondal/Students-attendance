@@ -1,16 +1,17 @@
 "use client"
-import React from 'react'
+import React, { useState } from 'react'
 
 import AddStudent from './_components/addStudent'
 import StudentsList from './_components/studentslist'
 
-const StudentPanel = () => {
 
+const StudentPanel = () => {
+    const [refresh, setRefresh] = useState(false)
     return (
         <div>
 
-            <AddStudent />
-            <StudentsList />
+            <AddStudent onStudentAdded={() => setRefresh(!refresh)} />
+            <StudentsList refresh={refresh} onDelete={() => setRefresh(!refresh)} />
         </div>
     )
 }
