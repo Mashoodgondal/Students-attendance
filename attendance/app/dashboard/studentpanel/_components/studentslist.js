@@ -4,7 +4,7 @@ import db from '../../../../firebaseConfig'
 import React, { useEffect, useState } from 'react'
 import { FiEdit, FiTrash2 } from 'react-icons/fi'
 import { useRouter } from 'next/navigation'
-
+import { toast, Toaster } from 'react-hot-toast';
 
 const StudentsList = ({ refresh, onDelete }) => {
     const router = useRouter();
@@ -42,7 +42,7 @@ const StudentsList = ({ refresh, onDelete }) => {
 
         try {
             await deleteDoc(doc(db, "Students", studentsId))
-            alert("delete successfully")
+            toast.success("Student deleted successfully")
             onDelete()
         } catch (error) {
             console.log("Error in deleting", error);
@@ -80,12 +80,11 @@ const StudentsList = ({ refresh, onDelete }) => {
 
     return (
         <div className="container mx-auto px-4 py-8">
+            <Toaster position='top-center' />
             <div className="bg-white shadow-md rounded-lg overflow-hidden">
-                <div className="bg-gradient-to-r from-blue-600 to-blue-800 p-6">
+                <div className="bg-gradient-to-r from-cyan-600 to-purple-800 p-6">
                     <h2 className="text-2xl font-bold text-white">Students Directory</h2>
-                    <p className="text-blue-100 mt-1">
-                        {students.length} {students.length === 1 ? 'student' : 'students'} registered
-                    </p>
+
                 </div>
 
                 <div className="overflow-x-auto">

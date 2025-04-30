@@ -1,93 +1,59 @@
 "use client";
 
+import Link from "next/link";
 import React from "react";
-// import Image from "next/image";
 
-// import imgstud from '../../public/imgstu.jpg'
 export default function SplashScreen() {
     return (
-        <div className="relative pt-28 pb-8 bg-black xl:pt-40 sm:pb-10 lg:pb-12 xl:pb-24 2xl:pb-32
-">
+        <div className="min-h-screen bg-gradient-to-br from-gray-900 via-indigo-900 to-black text-white flex flex-col items-center justify-center px-6 relative overflow-hidden">
+
+            {/* Glowing Particles */}
+            <div className="absolute w-96 h-96 bg-purple-500 rounded-full blur-3xl opacity-20 top-10 left-10 animate-pulse" />
+            <div className="absolute w-72 h-72 bg-blue-500 rounded-full blur-2xl opacity-20 bottom-10 right-10 animate-ping" />
+
             {/* Header */}
-            <header className="absolute inset-x-0 top-0 z-10 py-8 xl:py-12">
-                <div className="px-6 mx-auto sm:px-8 lg:px-12 max-w-7xl">
-                    <div className="flex items-center justify-between">
-                        <div className="flex flex-shrink-0">
-                            <span className="px-4 py-1 text-white text-xl sm:text-2xl font-medium rounded-full bg-white/10 border border-white/20 backdrop-blur-sm">
-                                Attendance Management System
-                            </span>
-
-
-                        </div>
-                    </div>
+            <header className="absolute top-0 w-full px-6 py-6 flex justify-center z-10">
+                <div className="text-xl sm:text-3xl font-bold px-6 py-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-white shadow-md transition-all duration-300 hover:scale-105">
+                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-300 via-pink-300 to-blue-300">
+                        Attendance Management System
+                    </span>
                 </div>
             </header>
 
+            {/* Main Content */}
+            <main className="max-w-3xl text-center mt-28 sm:mt-40 z-10 animate-fade-in">
+                <h1 className="text-4xl sm:text-5xl font-extrabold tracking-tight leading-tight mb-4">
+                    Smart Attendance Tracking System
+                </h1>
 
-            {/* <div className="absolute inset-0">
-                <Image
-                    src={imgstud}
-                    alt="Attendance Background"
-                    fill
-                    className="object-cover w-full h-full opacity-30"
-                    quality={100}
-                    priority
-                />
-            </div> */}
-            <div className="absolute inset-0 overflow-hidden">
-                <video
-                    autoPlay
-                    muted
-                    loop
-                    playsInline
-                    className="object-cover w-full h-full opacity-30"
+                <p className="text-lg sm:text-2xl text-white/80">
+                    Reliable Attendance <br />
+                    <span className="italic font-light text-3xl sm:text-4xl">
+                        Anytime. Anywhere.
+                    </span>
+                </p>
+
+                <p className="mt-6 text-base sm:text-lg text-white/70 leading-relaxed">
+                    Automate your attendance process with real-time insights, analytics, and secure logs. Designed for modern institutions.
+                </p>
+
+                <p className="mt-6 text-lg text-white font-medium">
+                    Get started today — it's free!
+                </p>
+
+
+                <div className=" mt-8 "
                 >
-                    <source src="/public/vidstu.mp4" type="video/mp4" />
-                    Your browser does not support the video tag.
-                </video>
-            </div>
+                    <Link href="/dashboard">
 
+                        {/* className="inline-block px-8 py-3 text-lg font-semibold rounded-full bg-gradient-to-r from-purple-500 to-indigo-500 text-white shadow-lg hover:from-purple-600 hover:to-indigo-600 transition-transform duration-300 hover:scale-105" */}
+                        <button className=" bg-purple-600">
 
-
-            {/* Hero Content */}
-            <div className="relative">
-                <div className="px-6 mx-auto sm:px-8 lg:px-12 max-w-7xl">
-                    <div className="w-full lg:w-2/3 xl:w-1/2">
-                        <h1 className="font-sans text-base font-normal tracking-tight text-white text-opacity-70">
-                            Simple & Smart Attendance Tracking
-                        </h1>
-                        <p className="mt-6 tracking-tighter text-white">
-                            <span className="font-sans font-normal text-3xl sm:text-4xl lg:text-4xl">
-                                Reliable Attendance
-                            </span>
-                            <br />
-                            <span className="font-serif italic font-normal text-3xl sm:text-4xl lg:text-5xl">
-                                Anytime. Anywhere.
-                            </span>
-                        </p>
-                        <p className="mt-12 font-sans text-base font-normal leading-7 text-white text-opacity-70">
-                            Automate and streamline your student or employee attendance process
-                            with our modern and intuitive system — real-time logs, analytics,
-                            and reports in a click.
-                        </p>
-                        <p className="mt-8 font-sans text-xl font-normal text-white">
-                            Get started for free today!
-                        </p>
-
-                        {/* Buttons */}
-                        <div className="flex flex-wrap items-center mt-5 gap-3 sm:gap-4">
-                            <a
-                                href="#"
-                                className="inline-flex items-center justify-center px-5 py-2 text-base sm:text-lg font-semibold transition-all duration-200 border-2 border-transparent rounded-full bg-white text-black hover:bg-opacity-90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary focus:ring-offset-secondary"
-                            >
-                                Start Tracking
-                            </a>
-
-
-                        </div>
-                    </div>
+                            Get started
+                        </button>
+                    </Link>
                 </div>
-            </div>
+            </main>
         </div>
     );
 }
