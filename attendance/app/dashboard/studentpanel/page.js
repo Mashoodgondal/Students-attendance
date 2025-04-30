@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 
 import AddStudent from './_components/addStudent'
 import StudentsList from './_components/studentslist'
-import UpdateStudentPage from '../updateStu/[id]/page'
+// import UpdateStudentPage from '../updateStu/[id]/page'
 
 
 const StudentPanel = () => {
