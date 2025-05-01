@@ -31,7 +31,7 @@ const StudentsList = ({ refresh, onDelete }) => {
 
     const handleEdit = (studentId) => {
         console.log("Edit student with ID:", studentId)
-        router.push(`/updatestu/${studentId}`)
+        router.push(`/dashboard/update/${studentId}`)
         // router.push(`/updatestu/124`)
         // Add your edit logic here
     }

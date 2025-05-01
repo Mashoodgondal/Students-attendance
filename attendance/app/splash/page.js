@@ -46,8 +46,8 @@ export default function SplashScreen() {
                 >
                     <Link href="/dashboard">
 
-                        {/* className="inline-block px-8 py-3 text-lg font-semibold rounded-full bg-gradient-to-r from-purple-500 to-indigo-500 text-white shadow-lg hover:from-purple-600 hover:to-indigo-600 transition-transform duration-300 hover:scale-105" */}
-                        <button className=" bg-purple-600  px-8 py-3 text-lg font-semibold rounded-full bg-gradient-to-r from-purple-500 to-indigo-500 text-white shadow-lg hover:from-purple-600 hover:to-indigo-600 transition-transform duration-300 hover:scale-105">
+
+                        <button className=" bg-purple-600 mb-8  px-8 py-3 text-lg font-semibold rounded-full bg-gradient-to-r from-purple-500 to-indigo-500 text-white shadow-lg hover:from-purple-600 hover:to-indigo-600 transition-transform duration-300 hover:scale-105">
 
                             Get started
                         </button>

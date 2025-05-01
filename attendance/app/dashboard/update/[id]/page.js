@@ -30,7 +30,7 @@ const UpdateStudentPage = () => {
                     });
                 } else {
                     toast.error("Student not found");
-                    router.push("/");
+                    router.push("/dashboard");
                 }
             } catch (err) {
                 toast.error("Failed to load student");
@@ -58,7 +58,7 @@ const UpdateStudentPage = () => {
             });
             toast.success("Student updated successfully!");
             setTimeout(() => {
-                router.push("/students"); // adjust path to your listing page
+                router.push("/dashboard/studentpanel");
             }, 1500);
         } catch (error) {
             console.error("Update error:", error);
