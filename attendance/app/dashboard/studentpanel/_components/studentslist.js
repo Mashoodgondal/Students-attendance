@@ -87,7 +87,7 @@ const StudentsList = ({ refresh, onDelete }) => {
 
                 </div>
 
-                <div className="overflow-x-auto">
+                <div className=" w-full overflow-x-auto">
                     <table className="min-w-full divide-y divide-gray-200">
                         <thead className="bg-gray-50">
                             <tr>
