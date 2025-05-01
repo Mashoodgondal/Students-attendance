@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import React from "react";
 import { FaGithub, FaLinkedin, FaEnvelope } from "react-icons/fa";
 
@@ -17,10 +18,10 @@ export default function Footer() {
                 <div>
                     <h3 className="text-lg font-semibold mb-3">Quick Links</h3>
                     <ul className="space-y-2 text-white/60 text-sm">
-                        <li><a href="/" className="hover:text-white">Home</a></li>
-                        <li><a href="/about" className="hover:text-white">About Us</a></li>
-                        <li><a href="/dashboard" className="hover:text-white">Dashboard</a></li>
-                        <li><a href="/contact" className="hover:text-white">Contact</a></li>
+                        <li><Link href="/" className="hover:text-white">Home</Link></li>
+                        <li><Link href="/about" className="hover:text-white">About Us</Link></li>
+                        <li><Link href="/dashboard" className="hover:text-white">Dashboard</Link></li>
+                        <li><Link href="/contact" className="hover:text-white">Contact</Link></li>
                     </ul>
                 </div>
 
